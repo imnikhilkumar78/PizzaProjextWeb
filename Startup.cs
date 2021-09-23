@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PizzaApplication.Models;
+using PizzaApplication.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +26,11 @@ namespace PizzaApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<PizzaWebStoreContext>(options =>
+            {
+                options.UseSqlServer(Configuration["ConnectionStrings:conCompany"]);
+            });
+            services.AddScoped<IRepo<User>, UserRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
