@@ -27,5 +27,30 @@ namespace PizzaApplication.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(User m)
+        {
+            if (ModelState.IsValid)
+            {
+                User s = _repo.Login(m);
+               
+                if (s != null)
+                {
+                    Console.WriteLine("Here");
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.alert = "Login Failed";
+                    return View("Login");
+                }
+            }
+            return View("Login");
+        }
+
     }
 }

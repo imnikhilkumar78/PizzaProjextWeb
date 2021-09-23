@@ -8,6 +8,7 @@ namespace PizzaApplication.Services
     public interface IRepo<K>
     {
         K Add(K k);
+        K Login(K k);
       
     }
 }
