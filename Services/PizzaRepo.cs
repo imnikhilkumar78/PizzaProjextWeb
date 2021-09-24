@@ -22,7 +22,7 @@ namespace PizzaApplication.Services
             {
                 pizza = _context.Pizzas.FirstOrDefault(e => e.PizzaId == id);
                 OrderDetail od = new OrderDetail();
-                od.OrderId = ur.order_id;
+                od.OrderId = _context.Orders.Max(od => od.OrderId); ;
                 od.PizzaId = pizza.PizzaId;
                 _context.OrderDetails.Add(od);
                 _context.SaveChanges();

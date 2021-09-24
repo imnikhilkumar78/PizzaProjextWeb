@@ -41,7 +41,7 @@ namespace PizzaApplication.Controllers
                 if (s != null)
                 {
                     Console.WriteLine("Here");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Pizza");
                 }
                 else
                 {

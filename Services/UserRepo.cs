@@ -10,7 +10,10 @@ namespace PizzaApplication.Services
     public class UserRepo : IRepo<User>
     {
         private readonly PizzaWebStoreContext _context;
-        public int order_id=0;
+
+        public int order_id { get; set; }
+
+        public string uemail = "";
 
         public UserRepo()
         {
@@ -55,16 +58,18 @@ namespace PizzaApplication.Services
                     order.Status = "In Transit";
                     _context.Orders.Add(order);
                     _context.SaveChanges();
-
                     foreach (var item in _context.Orders)
                     {
-                        if(item.UserId==k.UserEmail)
+                        if (item.UserId.Equals(k.UserEmail))
                         {
                             order_id = item.OrderId;
-                            break;
+                            
                         }
+                       
 
                     }
+
+
 
                     return k;
                 }
@@ -88,6 +93,9 @@ namespace PizzaApplication.Services
             }
             return null;
         }
+
+       
+
 
         private bool checklogin(string userEmail, string password)
         {
