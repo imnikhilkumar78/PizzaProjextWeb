@@ -18,6 +18,8 @@ namespace PizzaApplication.Models
         public string Speciality { get; set; }
         public string IsVeg { get; set; }
 
+        public string Imageurl { get; set; }
+
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

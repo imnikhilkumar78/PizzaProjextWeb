@@ -31,6 +31,7 @@ namespace PizzaApplication
                 options.UseSqlServer(Configuration["ConnectionStrings:conCompany"]);
             });
             services.AddScoped<IRepo<User>, UserRepo>();
+            services.AddScoped<IPizzaRepo<Pizza>, PizzaRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

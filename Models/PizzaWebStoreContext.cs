@@ -101,6 +101,9 @@ namespace PizzaApplication.Models
                 entity.Property(e => e.Speciality)
                     .HasMaxLength(40)
                     .IsUnicode(false);
+                entity.Property(e => e.Imageurl)
+                .HasMaxLength(40)
+                .IsUnicode(false);
             });
 
             modelBuilder.Entity<Topping>(entity =>
