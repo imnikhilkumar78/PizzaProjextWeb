@@ -8,10 +8,16 @@ namespace PizzaApplication.Services
 {
     public class ToppingRepo : IPizzaRepo<Topping>
     {
+        public double? TotalPriceTopping = 0;
         private readonly PizzaWebStoreContext _context;
         public ToppingRepo(PizzaWebStoreContext context)
         {
             _context = context;
+        }
+
+        public ToppingRepo()
+        {
+
         }
         public Topping Get(int id)
         {
@@ -23,6 +29,7 @@ namespace PizzaApplication.Services
                 td.ItemId = _context.OrderDetails.Max(od => od.ItemId);
                 td.ToppingId = topping.ToppingId;
                 _context.ToppinngDetails.Add(td);
+                TotalPriceTopping += topping.Price;
                 _context.SaveChanges();
 
             }

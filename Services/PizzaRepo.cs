@@ -9,13 +9,16 @@ namespace PizzaApplication.Services
     public class PizzaRepo : IPizzaRepo<Pizza>
     {
         private readonly PizzaWebStoreContext _context;
-        double TotalPrice = 0;
+        public double TotalPricePizza = 0;
         UserRepo ur = new UserRepo();
         public PizzaRepo(PizzaWebStoreContext context)
         {
             _context = context;
         }
-        
+        public PizzaRepo()
+        {
+
+        }
         public Pizza Get(int id)
         {
             Pizza pizza = null;
@@ -28,7 +31,7 @@ namespace PizzaApplication.Services
                 _context.OrderDetails.Add(od);
                 _context.SaveChanges();
                 
-                TotalPrice += pizza.Price;
+                TotalPricePizza = TotalPricePizza+ pizza.Price;
             }
             catch (ArgumentException ae)
             {
