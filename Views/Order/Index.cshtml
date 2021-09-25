@@ -48,12 +48,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
-          @*  <td>
-                <div class="btn btn-dark">
-                    @Html.ActionLink("Select_This", "Select_This", new { id = item.PizzaId })
-                </div>
-            </td>*@
-
+            @*  <td>
+            <div class="btn btn-dark">
+                @Html.ActionLink("Select_This", "Select_This", new { id = item.PizzaId })
+            </div>
+        </td>*@
+            @Html.ActionLink("Checkout", "Checkout", new { id = item.OrderId })
         </tr>
         }
     </tbody>

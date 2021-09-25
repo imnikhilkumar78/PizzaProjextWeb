@@ -29,7 +29,13 @@ namespace PizzaApplication.Services
                 td.ItemId = _context.OrderDetails.Max(od => od.ItemId);
                 td.ToppingId = topping.ToppingId;
                 _context.ToppinngDetails.Add(td);
-                TotalPriceTopping += topping.Price;
+              //  TotalPriceTopping += topping.Price;
+
+                Order order = new Order();
+                order.OrderId = _context.Orders.Max(or => or.OrderId);
+                order.Total = _context.Orders.Find(order.OrderId).Total + topping.Price;
+                _context.Orders.Update(order);
+
                 _context.SaveChanges();
 
             }

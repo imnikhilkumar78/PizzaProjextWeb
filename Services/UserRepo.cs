@@ -56,6 +56,7 @@ namespace PizzaApplication.Services
                     Order order = new Order();
                     order.UserId = k.UserEmail;
                     order.Status = "In Transit";
+                    order.Total = 0;
                     _context.Orders.Add(order);
                     _context.SaveChanges();
                     foreach (var item in _context.Orders)

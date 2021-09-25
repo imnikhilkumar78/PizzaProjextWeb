@@ -24,14 +24,21 @@ namespace PizzaApplication.Services
             Pizza pizza = null;
             try
             {
+
                 pizza = _context.Pizzas.FirstOrDefault(e => e.PizzaId == id);
                 OrderDetail od = new OrderDetail();
                 od.OrderId = _context.Orders.Max(od => od.OrderId); ;
                 od.PizzaId = pizza.PizzaId;
                 _context.OrderDetails.Add(od);
+
+
+                Order order = new Order();
+                order.OrderId = _context.Orders.Max(or => or.OrderId);
+                order.Total = _context.Orders.Find(order.OrderId).Total + pizza.Price;
+                _context.Orders.Update(order);
                 _context.SaveChanges();
                 
-                TotalPricePizza = TotalPricePizza+ pizza.Price;
+              // TotalPricePizza += pizza.Price;
             }
             catch (ArgumentException ae)
             {
