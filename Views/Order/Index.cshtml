@@ -1,4 +1,4 @@
-﻿@model PizzaApplication.Services.ViewModel
+﻿@*@model PizzaApplication.Services.ViewModel*@
 
 
 @{
@@ -29,22 +29,22 @@
         </tr>
     </thead>*@
     <tbody>
-        @foreach (var item in Model.Pizza1)
+        @foreach (var item in ViewBag.ListPizza)
         {
         <tr>
 
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
+            @*<td>
+                @Html.DisplayFor(modelItem => item)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Speciality)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsVeg)
-            </td>
+            </td>*@
            
             @*  <td>
             <div class="btn btn-dark">

@@ -20,8 +20,8 @@ namespace PizzaApplication.Controllers
         public IActionResult Index()
         {
             ViewModel vm = new ViewModel();
-            List<Pizza> Pizza = vm.getListPizza();
-            return View(Pizza);
+            ViewBag.ListPizza = vm.getListPizza();
+            return View();
         }
 
         public IActionResult Checkout(int id)
