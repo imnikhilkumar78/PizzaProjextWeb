@@ -26,18 +26,23 @@ namespace PizzaApplication.Services
             Order order = new Order();
             try
             {
-                order.OrderId = _context.Orders.Max(or => or.OrderId);
+                int OrderId = _context.Orders.Max(or => or.OrderId);
+                double? totalPrice = 0;
+                foreach (var item in _context.Orders)
+                {
+                    if(item.OrderId==OrderId)
+                    {
+                        totalPrice = item.Total;
+                        if (totalPrice > 25)
+                           item.DeliveryCharge = 0;
+                        else
+                            item.DeliveryCharge = 5;
+                    }
+                   
 
-                double? totalPrice = _context.Orders.Find(order.OrderId).Total; 
-
-                if (totalPrice > 25)
-                    order.DeliveryCharge = 0;
-                else
-                    order.DeliveryCharge = 5;
-
+                }
                
-
-                _context.Orders.Update(order);
+                
                 _context.SaveChanges();
             }
             catch (ArgumentException ae)

@@ -21,5 +21,10 @@ namespace PizzaApplication.Models
         public string Imageurl { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        public static implicit operator List<object>(Pizza v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -31,10 +31,14 @@ namespace PizzaApplication.Services
                 _context.ToppinngDetails.Add(td);
               //  TotalPriceTopping += topping.Price;
 
-                Order order = new Order();
-                order.OrderId = _context.Orders.Max(or => or.OrderId);
-                order.Total = _context.Orders.Find(order.OrderId).Total + topping.Price;
-                _context.Orders.Update(order);
+                //Order order = new Order();
+                int OrderId = _context.Orders.Max(or => or.OrderId);
+                foreach (var item in _context.Orders)
+                {
+                    item.Total += topping.Price;
+                }
+               
+            
 
                 _context.SaveChanges();
 

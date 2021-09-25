@@ -14,7 +14,7 @@ namespace PizzaApplication.Models
 
         public int ItemId { get; set; }
         public int? OrderId { get; set; }
-        public int? PizzaId { get; set; }
+        public int PizzaId { get; set; }
 
         public virtual Order Order { get; set; }
         public virtual Pizza Pizza { get; set; }

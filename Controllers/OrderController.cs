@@ -19,7 +19,9 @@ namespace PizzaApplication.Controllers
 
         public IActionResult Index()
         {
-            return View(_repo.GetAll());
+            ViewModel vm = new ViewModel();
+            List<Pizza> Pizza = vm.getListPizza();
+            return View(Pizza);
         }
 
         public IActionResult Checkout(int id)

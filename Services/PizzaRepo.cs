@@ -33,9 +33,12 @@ namespace PizzaApplication.Services
 
 
                 Order order = new Order();
-                order.OrderId = _context.Orders.Max(or => or.OrderId);
-                order.Total = _context.Orders.Find(order.OrderId).Total + pizza.Price;
-                _context.Orders.Update(order);
+                int OrderId = _context.Orders.Max(or => or.OrderId);
+                foreach (var item in _context.Orders)
+                {
+                    item.Total += pizza.Price;
+                }
+               
                 _context.SaveChanges();
                 
               // TotalPricePizza += pizza.Price;

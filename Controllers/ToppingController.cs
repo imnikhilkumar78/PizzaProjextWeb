@@ -27,7 +27,7 @@ namespace PizzaApplication.Controllers
         }
         public IActionResult Checkout()
         {
-            return View();
+            return RedirectToAction("Index", "Order");
         }
         public IActionResult AddPizza()
         {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PizzaApplication.Models.Order>
+﻿@model PizzaApplication.Services.ViewModel
 
 
 @{
@@ -9,7 +9,7 @@
 
 
 <table class="table">
-    <thead>
+    @*<thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.OrderId)
@@ -27,33 +27,31 @@
                 @Html.DisplayNameFor(model => model.Status)
             </th>
         </tr>
-    </thead>
+    </thead>*@
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Pizza1)
         {
         <tr>
 
             <td>
-                @Html.DisplayFor(modelItem => item.OrderId)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
+                @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Total)
+                @Html.DisplayFor(modelItem => item.Speciality)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DeliveryCharge)
+                @Html.DisplayFor(modelItem => item.IsVeg)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
+           
             @*  <td>
             <div class="btn btn-dark">
                 @Html.ActionLink("Select_This", "Select_This", new { id = item.PizzaId })
             </div>
         </td>*@
-            @Html.ActionLink("Checkout", "Checkout", new { id = item.OrderId })
+            @*@Html.ActionLink("Checkout", "Checkout", new { id = item.OrderId })*@
         </tr>
         }
     </tbody>
