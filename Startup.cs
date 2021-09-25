@@ -32,6 +32,7 @@ namespace PizzaApplication
             });
             services.AddScoped<IRepo<User>, UserRepo>();
             services.AddScoped<IPizzaRepo<Pizza>, PizzaRepo>();
+            services.AddScoped<IPizzaRepo<Topping>, ToppingRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,7 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="btn btn-dark ">
+
+        @Html.ActionLink("Login", "Login")
+
+    </div>
+    <div class="btn btn-dark ">
+
+        @Html.ActionLink("Register", "Register")
+
+    </div>
+    @foreach (var item in ViewBag.images)
+    {
+        <img src=@item alt="Image Missed" style="height:100%; width:100%; background-size:100% 100%; background-repeat: no-repeat; overflow-y:hidden; overflow-x:hidden" />
+
+    }
+
+
 </div>

@@ -20,7 +20,19 @@ namespace PizzaApplication.Controllers
 
         public IActionResult Index()
         {
+            String[] images = { "/img/cyl.png" };
+            ViewBag.images = images;
             return View();
+        }
+
+        public IActionResult Login()
+        {
+            return RedirectToAction("Login", "User");
+        }
+
+        public IActionResult Register()
+        {
+            return RedirectToAction("Index", "User");
         }
 
         public IActionResult Privacy()

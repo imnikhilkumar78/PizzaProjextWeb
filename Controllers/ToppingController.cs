@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace PizzaApplication.Controllers
 {
-    public class PizzaController : Controller
+    public class ToppingController : Controller
     {
-        private readonly IPizzaRepo<Pizza> _repo;
+        private readonly IPizzaRepo<Topping> _repo;
 
-        public PizzaController(IPizzaRepo<Pizza> repo)
+        public ToppingController(IPizzaRepo<Topping> repo)
         {
             _repo = repo;
         }
@@ -23,9 +23,7 @@ namespace PizzaApplication.Controllers
 
         public IActionResult Select_This(int id)
         {
-            ViewBag.Status = "Pizza Added";
             return View(_repo.Get(id));
-            
         }
     }
 }
