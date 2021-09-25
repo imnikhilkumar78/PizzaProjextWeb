@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PizzaApplication.Models.Pizza>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Index";
+}
+<h1> Pizza Index </h1>
+<h2> @ViewBag.Status</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Speciality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsVeg)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+               <img src="@item.Imageurl" alt="Image not Available" style="height:100px; width: 100px;"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Speciality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsVeg)
+            </td>
+            <td>
+                <div class="btn btn-dark">
+                    @Html.ActionLink("Select_This", "Select_This", new { id = item.PizzaId })
+                </div>
+            </td>
+            
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,61 @@
+﻿@model PizzaApplication.Models.User
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h4>User</h4>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                User Registration
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "User", FormMethod.Post))
+                {
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserEmail)
+                        <br />
+                        @Html.EditorFor(m => m.UserEmail)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        <br />
+                        @Html.EditorFor(m => m.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        <br />
+                        @Html.EditorFor(m => m.Password)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address)
+                        <br />
+                        @Html.EditorFor(m => m.Address)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Phone)
+                        <br />
+                        @Html.EditorFor(m => m.Phone)
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                }
+            </div>
+    </div>
+</div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
