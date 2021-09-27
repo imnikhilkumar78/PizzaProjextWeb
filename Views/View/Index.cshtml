@@ -1,8 +1,9 @@
-﻿@model IEnumerable<PizzaApplication.Models.Pizza>
-    ViewData["Title"] = "Index";
+﻿@model PizzaApplication.Models.PizzaToppingModel
+@{
+    ViewData["Title"] = "Bill Summary";
 }
 
-<h1>Index</h1>
+<h1>Your Bill Details</h1>
 
 
 <table class="table">
@@ -26,36 +27,46 @@
             </tr>
         </thead>*@
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.ListOfPizza)
         {
-            
+
+
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Speciality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsVeg)
+                </td>
+
+
+            </tr>
+
+            @foreach (var i in Model.ListofToppings)
+            {
+
                 <tr>
 
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => i.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Price)
+                        @Html.DisplayFor(modelItem => i.Price)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Speciality)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsVeg)
-                    </td>
-
-                    @*<td>
-                            <div class="btn btn-dark">
-                                @Html.ActionLink("Select_This", "Select_This", new { id = item.PizzaId })
-                            </div>
-                        </td>*@
-                    @*@Html.ActionLink("Checkout", "Checkout", new { id = item.OrderId })*@
                 </tr>
-                <tr>
-                    @Html.Partial("/Views/ViewTopping/Index.cshtml")
-                </tr>
-           
+            }
 
         }
     </tbody>
 </table>
+
+<h3 style="text-decoration:solid;">Total Price: @Model.TotalPrice</h3>
+<h3>Delivery Charge: @Model.DeliveryCharge</h3>
+<h2 style="text-decoration:solid;"> Note : Delivery Charge of 5 applicable for Order below 25</h2>
