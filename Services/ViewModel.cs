@@ -14,7 +14,8 @@ namespace PizzaApplication.Services
             context = new PizzaWebStoreContext();
         }
 
-        public List<Pizza> Pizza1 = new List<Pizza>();
+        public List<Pizza> Pizza1=new List<Pizza>();
+        public List<Topping> Topping1 = new List<Topping>();
 
         private List<int> getItemId(int orderId)
         {
@@ -42,6 +43,21 @@ namespace PizzaApplication.Services
             }
             return PizzaId;
         }
+        private List<int> getToppingId(int itemId)
+        {
+
+            List<int> ToppingId = new List<int>();
+            foreach (var item in context.ToppinngDetails)
+            {
+                if (item.ItemId == itemId)
+                {
+                    ToppingId.Add(item.ToppingId);
+
+                }
+            }
+
+            return ToppingId;
+        }
 
         public List<Pizza> getListPizza()
         {
@@ -51,7 +67,8 @@ namespace PizzaApplication.Services
             List<int> PizzaId = new List<int>();
             foreach (var item in itemId)
             {
-                PizzaId = getPizzaId(item);
+              
+                PizzaId.AddRange(getPizzaId(item));
             }
             foreach (var item in PizzaId)
             {
@@ -64,6 +81,30 @@ namespace PizzaApplication.Services
                 }
             }
             return Pizza1;
+        }
+
+        public List<Topping> getToppingList()
+        {
+            int orderId = context.Orders.Max(or => or.OrderId);
+            List<int> itemId = new List<int>();
+            itemId = getItemId(orderId);
+            List<int> ToppingId = new List<int>();
+            foreach (var item in itemId)
+            {
+                ToppingId.AddRange(getToppingId(item));
+            }
+            foreach (var item in ToppingId)
+            {
+                foreach (var toppings in context.Toppings)
+                {
+                    if (toppings.ToppingId == item)
+                    {
+                        Topping1.Add(toppings);
+                    }
+                }
+            }
+            return Topping1;
+
         }
     }
 }

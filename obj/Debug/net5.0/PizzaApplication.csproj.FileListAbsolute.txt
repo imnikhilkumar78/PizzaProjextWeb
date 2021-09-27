@@ -741,7 +741,6 @@ C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\PizzaApplication.Razo
 C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\Razor\Views\Order\Checkout.cshtml.g.cs
-C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\Razor\Views\Order\Index.cshtml.g.cs
 C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\Razor\Views\Pizza\Index.cshtml.g.cs
 C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\Razor\Views\Pizza\Select_This.cshtml.g.cs
 C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -761,3 +760,5 @@ C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\PizzaApplication.dll
 C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\ref\PizzaApplication.dll
 C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\PizzaApplication.pdb
 C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\PizzaApplication.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\Razor\Views\View\Index.cshtml.g.cs
+C:\Users\Administrator\Desktop\pizza Test\obj\Debug\net5.0\Razor\Views\ViewTopping\Index.cshtml.g.cs

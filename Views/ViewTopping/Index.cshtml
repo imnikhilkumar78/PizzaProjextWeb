@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PizzaApplication.Models.Topping>
+    ViewData["Title"] = "Index";
+}
+
+<h3>Your Selecteed Toppings</h3>
+
+
+<table class="table">
+    @*<thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryCharge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+            </tr>
+        </thead>*@
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Speciality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsVeg)
+                </td>*@
+
+                @*<td>
+                        <div class="btn btn-dark">
+                            @Html.ActionLink("Select_This", "Select_This", new { id = item.PizzaId })
+                        </div>
+                    </td>*@
+                @*@Html.ActionLink("Checkout", "Checkout", new { id = item.OrderId })*@
+            </tr>
+            
+
+
+        }
+    </tbody>
+</table>

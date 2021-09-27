@@ -34,6 +34,8 @@ namespace PizzaApplication
             services.AddScoped<IPizzaRepo<Pizza>, PizzaRepo>();
             services.AddScoped<IPizzaRepo<Topping>, ToppingRepo>();
             services.AddScoped<IPizzaRepo<Order>, OrderRepo>();
+            services.AddScoped<IOrder<Pizza>, ViewRepo>();
+            services.AddScoped<IOrder<Topping>, ViewToppingRepo>();
             services.AddScoped<ViewModel>();
         }
 

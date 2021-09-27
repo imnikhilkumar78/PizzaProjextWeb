@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 using PizzaApplication.Models;
 using PizzaApplication.Services;
 using System;
@@ -7,28 +6,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace PizzaApplication.Controllers
 {
-    public class OrderController : Controller
+    public class ViewController : Controller
     {
-        private readonly IPizzaRepo<Order> _repo;
+        private readonly IOrder<Pizza> _repo;
+       
 
-        public OrderController(IPizzaRepo<Order> repo)
+        public ViewController(IOrder<Pizza> repo)
         {
             _repo = repo;
+          
         }
-
+      
         public IActionResult Index()
         {
-
-
-            return View();
+            return View(_repo.GetAll());
         }
-
-        public IActionResult Checkout(int id)
-        {
-            return View(_repo.Get(id));
-        }
+        
     }
 }
