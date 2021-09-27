@@ -23,8 +23,18 @@ namespace PizzaApplication.Controllers
         [HttpPost]
         public IActionResult Index(User m)
         {
-            _repo.Add(m);
-            return RedirectToAction("Index");
+            User s = _repo.Add(m);
+            if (s != null)
+            {
+                Console.WriteLine("Here");
+                return RedirectToAction("Login", "User");
+            }
+            else
+            {
+                ViewBag.regalert = "Email Id already exist";
+                return View("Index");
+            }
+            //return RedirectToAction("Index");
         }
 
         public IActionResult Login()
@@ -45,7 +55,7 @@ namespace PizzaApplication.Controllers
                 }
                 else
                 {
-                    ViewBag.alert = "Login Failed";
+                    ViewBag.alert = "Login Failed!!Please try again...";
                     return View("Login");
                 }
             }
