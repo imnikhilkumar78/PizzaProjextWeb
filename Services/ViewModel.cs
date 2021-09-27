@@ -36,6 +36,31 @@ namespace PizzaApplication.Services
             return itemId;
         }
 
+        public string getUserAddress()
+        {
+            string UAddress = "";
+            string UEmail = "";
+            int orderId = context.Orders.Max(or => or.OrderId);
+            foreach (var item in context.Orders)
+            {
+                if (item.OrderId == orderId)
+                {
+                    UEmail = item.UserId;
+                    break;
+                }
+            }
+            foreach (var item in context.Users)
+            {
+                if (item.UserEmail.Equals(UEmail))
+                {
+                    UAddress = item.Address;
+                    break;
+                }
+            }
+            
+            return UAddress;
+        }
+
         internal double getDeliveryCharge()
         {
             double totalPrice = 0;

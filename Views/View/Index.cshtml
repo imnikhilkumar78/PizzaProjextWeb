@@ -6,6 +6,8 @@
 <h1>Your Bill Details</h1>
 
 
+
+
 <table class="table">
     @*<thead>
             <tr>
@@ -67,6 +69,17 @@
     </tbody>
 </table>
 
-<h3 style="text-decoration:solid;">Total Price: @Model.TotalPrice</h3>
-<h3>Delivery Charge: @Model.DeliveryCharge</h3>
-<h2 style="text-decoration:solid;"> Note : Delivery Charge of 5 applicable for Order below 25</h2>
+<h4 style="text-decoration:solid;">Total Price: @Model.TotalPrice</h4>
+<h4>Delivery Charge: @Model.DeliveryCharge</h4>
+<h5 style="text-decoration:solid;"> Note : Delivery Charge of 5 applicable for Order below 25</h5>
+<div class="container">
+    <div class="btn btn-dark ">
+
+        @Html.ActionLink("Confirm The Order", "Confirm")
+
+    </div>
+    <div class="btn btn-dark ">
+
+        @Html.ActionLink("Cancel", "Cancel")
+
+    </div>

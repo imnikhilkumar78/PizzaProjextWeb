@@ -917,3 +917,4 @@ C:\Users\Administrator\Desktop\PizzaWithOrders\obj\Debug\net5.0\PizzaApplication
 C:\Users\Administrator\Desktop\PizzaWithOrders\obj\Debug\net5.0\ref\PizzaApplication.dll
 C:\Users\Administrator\Desktop\PizzaWithOrders\obj\Debug\net5.0\PizzaApplication.pdb
 C:\Users\Administrator\Desktop\PizzaWithOrders\obj\Debug\net5.0\PizzaApplication.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\PizzaWithOrders\obj\Debug\net5.0\Razor\Views\View\Confirm.cshtml.g.cs

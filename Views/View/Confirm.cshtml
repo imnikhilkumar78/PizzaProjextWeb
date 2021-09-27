@@ -1,0 +1,23 @@
+﻿@model PizzaApplication.Models.PizzaToppingModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<div class="card">
+    <div class="card-header">
+        Order Confirmation
+    </div>
+    <div class="card-body">
+        <h4>Your Order is Confirmed and will be delivered to </h4>
+        <hr />
+        <h3 style="color:aqua">@Model.Address</h3>
+       
+    </div>
+    <div class="card-footer">
+        Thank You
+        Visit Again
+    </div>
+</div>

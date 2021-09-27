@@ -26,16 +26,32 @@ namespace PizzaApplication.Controllers
             List<Topping> toppingList = vm.getToppingList();
             double totalPrice = vm.getTotalPrice();
             double Deliverycharge = vm.getDeliveryCharge();
+          
 
             var PizzaToppingList = new PizzaToppingModel
             {
                 ListOfPizza = PizzaList,
                 ListofToppings = toppingList,
                 TotalPrice = totalPrice,
-                DeliveryCharge = Deliverycharge
+                DeliveryCharge = Deliverycharge,
+             
 
             };
             return View(PizzaToppingList);
+        }
+        public IActionResult Confirm()
+        {
+            ViewModel vm = new ViewModel();
+            string UAddress = vm.getUserAddress();
+            var PizzaToppingList = new PizzaToppingModel
+            {
+                Address = UAddress
+            };
+            return View(PizzaToppingList);
+        }
+        public IActionResult Cancel()
+        {
+            return RedirectToAction("Login","User");
         }
 
     }

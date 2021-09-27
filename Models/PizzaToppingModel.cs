@@ -11,5 +11,6 @@ namespace PizzaApplication.Models
         public List<Topping> ListofToppings { get; set; }
         public double TotalPrice { get; set; }
         public double DeliveryCharge { get; set; }
+        public string Address { get; set; }
     }
 }
