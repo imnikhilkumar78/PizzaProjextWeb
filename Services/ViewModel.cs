@@ -18,10 +18,14 @@ namespace PizzaApplication.Services
         public List<Topping> Topping1 = new List<Topping>();
 
 
+        public int getOderId()
+        {
+            int orderId = context.Orders.Max(or => or.OrderId);
+            return orderId;
+        }
 
 
-
-        private List<int> getItemId(int orderId)
+        public List<int> getItemId(int orderId)
         {
             List<int> itemId = new List<int>();
             foreach (var item in context.OrderDetails)

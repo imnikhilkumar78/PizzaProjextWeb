@@ -5,7 +5,8 @@
 
 <h1>Your Bill Details</h1>
 
-
+ @{int itemId = Model.ItemId[0];
+     int current = 0;}
 
 
 <table class="table">
@@ -28,6 +29,7 @@
                 </th>
             </tr>
         </thead>*@
+ 
     <tbody>
         @foreach (var item in Model.ListOfPizza)
         {
@@ -51,19 +53,45 @@
 
             </tr>
 
-            @foreach (var i in Model.ListofToppings)
+            @for (int i = current; i < Model.ListofToppings.Count; i++)
             {
+                if (i == 0)
+                {
+                    <tr>
 
-                <tr>
+                        <td>
+                            @Html.Raw(Model.ListofToppings[i].Name)
+                        </td>
+                        <td>
+                            @Html.Raw(Model.ListofToppings[i].Price)
+                        </td>
+                    </tr>
+                    current++;
+                    break;
+                }
+                @for (int j = i + 1; j < Model.ItemId.Count; j++)
+                {
+                    if (Model.ItemId[j] == itemId)
+                    {
+                        <tr>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => i.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => i.Price)
-                    </td>
-                </tr>
+                            <td>
+                                @Html.Raw(Model.ListofToppings[i].Name)
+                            </td>
+                            <td>
+                                @Html.Raw(Model.ListofToppings[i].Price)
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    itemId = j;
+                }
+                break;
             }
+
 
         }
     </tbody>

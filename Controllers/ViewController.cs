@@ -26,7 +26,9 @@ namespace PizzaApplication.Controllers
             List<Topping> toppingList = vm.getToppingList();
             double totalPrice = vm.getTotalPrice();
             double Deliverycharge = vm.getDeliveryCharge();
-          
+            int orderId = vm.getOderId();
+            List<int> ItemId = vm.getItemId(orderId);
+
 
             var PizzaToppingList = new PizzaToppingModel
             {
@@ -34,7 +36,7 @@ namespace PizzaApplication.Controllers
                 ListofToppings = toppingList,
                 TotalPrice = totalPrice,
                 DeliveryCharge = Deliverycharge,
-             
+                ItemId = ItemId
 
             };
             return View(PizzaToppingList);

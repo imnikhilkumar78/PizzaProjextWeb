@@ -9,6 +9,7 @@ namespace PizzaApplication.Models
     {
         public List<Pizza> ListOfPizza { get; set; }
         public List<Topping> ListofToppings { get; set; }
+        public List<int> ItemId { get; set; }
         public double TotalPrice { get; set; }
         public double DeliveryCharge { get; set; }
         public string Address { get; set; }
