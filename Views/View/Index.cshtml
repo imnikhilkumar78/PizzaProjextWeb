@@ -5,97 +5,48 @@
 
 <h1>Your Bill Details</h1>
 
- @{int itemId = Model.ItemId[0];
-     int current = 0;}
+
 
 
 <table class="table">
-    @*<thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.OrderId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Total)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DeliveryCharge)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Status)
-                </th>
-            </tr>
-        </thead>*@
- 
+
+
     <tbody>
-        @foreach (var item in Model.ListOfPizza)
+
+
+        @foreach (var item in Model.ToppingPizzaList)
         {
-
-
             <tr>
-
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Pizza.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @Html.DisplayFor(modelItem => item.Pizza.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Speciality)
+                    @Html.DisplayFor(modelItem => item.Pizza.Speciality)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsVeg)
+                    @Html.DisplayFor(modelItem => item.Pizza.IsVeg)
                 </td>
-
-
             </tr>
-
-            @for (int i = current; i < Model.ListofToppings.Count; i++)
+            @foreach (var toppingItem in item.ToppinngDetails)
             {
-                if (i == 0)
-                {
-                    <tr>
-
-                        <td>
-                            @Html.Raw(Model.ListofToppings[i].Name)
-                        </td>
-                        <td>
-                            @Html.Raw(Model.ListofToppings[i].Price)
-                        </td>
-                    </tr>
-                    current++;
-                    break;
-                }
-                @for (int j = i + 1; j < Model.ItemId.Count; j++)
-                {
-                    if (Model.ItemId[j] == itemId)
-                    {
-                        <tr>
-
-                            <td>
-                                @Html.Raw(Model.ListofToppings[i].Name)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.ListofToppings[i].Price)
-                            </td>
-                        </tr>
-                    }
-                    else
-                    {
-                        break;
-                    }
-                    itemId = j;
-                }
-                break;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => toppingItem.Topping.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => toppingItem.Topping.Price)
+                    </td>
+                </tr>
             }
 
-
         }
+
+
     </tbody>
-</table>
+    </table>
 
 <h4 style="text-decoration:solid;">Total Price: @Model.TotalPrice</h4>
 <h4>Delivery Charge: @Model.DeliveryCharge</h4>
@@ -110,4 +61,5 @@
 
         @Html.ActionLink("Cancel", "Cancel")
 
+    </div>
     </div>

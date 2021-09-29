@@ -3,6 +3,7 @@ using PizzaApplication.Models;
 using PizzaApplication.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,9 +27,12 @@ namespace PizzaApplication.Controllers
             List<Topping> toppingList = vm.getToppingList();
             double totalPrice = vm.getTotalPrice();
             double Deliverycharge = vm.getDeliveryCharge();
-            int orderId = vm.getOderId();
-            List<int> ItemId = vm.getItemId(orderId);
-
+            List<OrderDetail> ToppingPizzaList = vm.getItemToppingIdList();
+            if (toppingList.Count == ToppingPizzaList.Count)
+            {
+                Debug.WriteLine("----------Toppings "+ toppingList.Count+"--- ToppingPizza"+ ToppingPizzaList.Count);
+            }
+            else Debug.WriteLine("-NOOO--------Toppings " + toppingList.Count + "--- ToppingPizza" + ToppingPizzaList.Count);
 
             var PizzaToppingList = new PizzaToppingModel
             {
@@ -36,7 +40,7 @@ namespace PizzaApplication.Controllers
                 ListofToppings = toppingList,
                 TotalPrice = totalPrice,
                 DeliveryCharge = Deliverycharge,
-                ItemId = ItemId
+                ToppingPizzaList = ToppingPizzaList
 
             };
             return View(PizzaToppingList);

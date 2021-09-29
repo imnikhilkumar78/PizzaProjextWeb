@@ -28,7 +28,7 @@ namespace PizzaApplication.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=KANINI-LTP-476\\SQLSERVER2021ACH;Integrated Security=true;Initial catalog=PizzaWebStore");
+                optionsBuilder.UseSqlServer("Data source=DESKTOP-AALMCVF\\SQLSERVER2019G3; Integrated Security=true;Initial catalog=PizzaWebStore");
             }
         }
 
