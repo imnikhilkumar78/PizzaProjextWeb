@@ -1,65 +1,55 @@
 ﻿@model PizzaApplication.Models.PizzaToppingModel
-@{
-    ViewData["Title"] = "Bill Summary";
-}
-
+@{ ViewData["Title"] = "Bill Summary"; }
+@{ double sum = 0; }
 <h1>Your Bill Details</h1>
 
 
 
+<div class="card-deck">
 
-<table class="table">
+    @foreach (var item in Model.ToppingPizzaList)
+    {
 
+        sum = 0;
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title" style="color:darkred"> Pizza:</h5>   <hr />
 
-    <tbody>
-
-
-        @foreach (var item in Model.ToppingPizzaList)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pizza.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pizza.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pizza.Speciality)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pizza.IsVeg)
-                </td>
-            </tr>
+        <h5 class="card-title d-inline">  @Html.DisplayFor(modelItem => item.Pizza.Name)</h5>
+        <h6 class="card-subtitle mb-2 text-muted d-inline">@Html.DisplayFor(modelItem => item.Pizza.Price)</h6><br />
+        <p class="card-text d-inline ">@Html.DisplayFor(modelItem => item.Pizza.Speciality)</p>
+        <p class="card-text d-inline ">  @Html.DisplayFor(modelItem => item.Pizza.IsVeg)</p>
+        @{sum += (double)item.Pizza.Price; }
+        <hr />
+        <h5 class="card-title " style="color:darkred"> Toppings:</h5>
+        <ul class="list-group list-group-flush">
             @foreach (var toppingItem in item.ToppinngDetails)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => toppingItem.Topping.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => toppingItem.Topping.Price)
-                    </td>
-                </tr>
-            }
-
-        }
 
 
-    </tbody>
-    </table>
+<li class="list-group-item">
+    @Html.DisplayFor(modelItem => toppingItem.Topping.Name)
+    @Html.DisplayFor(modelItem => toppingItem.Topping.Price)
+</li>sum += (double)toppingItem.Topping.Price;
 
+                }
+        </ul>
+    </div>
+    <div class="card-footer">
+        <small class="text-muted" style="color:darkred">Total: @sum</small>
+    </div>
+</div>}
+</div>
 <h4 style="text-decoration:solid;">Total Price: @Model.TotalPrice</h4>
 <h4>Delivery Charge: @Model.DeliveryCharge</h4>
 <h5 style="text-decoration:solid;"> Note : Delivery Charge of 5 applicable for Order below 25</h5>
 <div class="container">
-    <div class="btn btn-dark ">
-
+    <div class="btn btn-light">
         @Html.ActionLink("Confirm The Order", "Confirm")
-
     </div>
-    <div class="btn btn-dark ">
+    <div class="btn btn-light  ">
 
         @Html.ActionLink("Cancel", "Cancel")
 
     </div>
-    </div>
+</div>

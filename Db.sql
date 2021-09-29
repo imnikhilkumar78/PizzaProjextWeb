@@ -9,7 +9,7 @@ Password varchar(40),
 Address varchar(100),
 Phone varchar(20))
 
-select * from Users
+
 
 create table Pizza
 (Pizza_Id int identity(1,1) primary key,
@@ -41,10 +41,11 @@ Topping_Id int foreign key references Toppings(Topping_Id),
 Primary Key(Item_Id, Topping_Id))
 
 Insert into Pizza 
-values ('Pizza Pepperoni Blues', 21, 'Spicy', 'notVeg'),
-('Pizza Margarita', 19, 'Cheesy', 'Veg'),
-('Pizza Manhattan', 20, 'Mashrooms', 'notVeg'),
-('Pizza Toscana', 21, 'Cheesy', 'notVeg'),
-('Pizza Five Cheeses', 22, 'Cheesy', 'Veg'),
-('VEG Loaded', 22, 'Veg', 'Veg'),
-('Paneer & Onion', 21, 'Veg', 'Veg');
+values
+('Pizza Toscana', 21, 'Cheesy', 'notVeg','pizzamain'),
+('Pizza Five Cheeses', 22, 'Cheesy', 'Veg','pizzamain2'),
+('VEG Loaded', 22, 'Veg', 'Veg','pizzamain3');
+
+
+select * from Users
+update pizza set Imageurl='img/a.jfif' where Pizza_Id=1

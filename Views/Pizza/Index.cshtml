@@ -2,58 +2,54 @@
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 <h1> Pizza Index </h1>
 <h2> @ViewBag.Status</h2>
+<head>
+    <style>
+        .btn.btn-outline-danger:hover {
+            color: #fff;
+        }
+    </style>
+</head>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
+<div class="card-columns">
 
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Speciality)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsVeg)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-               <img src="@item.Imageurl" alt="Image not Available" style="height:100px; width: 100px;"/>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Speciality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsVeg)
-            </td>
-            <td>
+    @foreach (var item in Model)
+    {
+<div class="card text-center" style="width: 18rem;">
+    <tr>
+        <td>
+            <img src="@item.Imageurl" class="card-img-top" alt="Image not Available" />
+        </td>
+        <div class="card-body">
+            <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Name)</h5>
+
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Price : @Html.DisplayFor(modelItem => item.Price)</li>
+
+            <li class="list-group-item">Speciality : @Html.DisplayFor(modelItem => item.Speciality)</li>
+
+            <li class="list-group-item">IsVeg : @Html.DisplayFor(modelItem => item.IsVeg)</li>
+            <li class="list-group-item">
+                <div class="btn btn-outline-danger">
+
+                    @Html.ActionLink("Add", "Select_This", new { id = item.PizzaId }, new { @style = "color: #540615 ; text-decoration: none ;" })
+
+                </div>
+            </li>
+        </ul>
+
+        @*<td>
                 <div class="btn btn-dark">
                     @Html.ActionLink("Select_This", "Select_This", new { id = item.PizzaId })
                 </div>
             </td>
-            
-        </tr>
-        }
-    </tbody>
-</table>
+        *@
+    </tr>
+</div>            }
+</div>
+
+<tbody>
+</tbody>

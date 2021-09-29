@@ -19,6 +19,10 @@ namespace PizzaApplication.Controllers
         //    _repo = repo;
 
         //}
+        public IActionResult Logout()
+        {
+            return RedirectToAction("Login", "User");
+        }
 
         public IActionResult Index()
         {
